@@ -22,7 +22,7 @@ class SupplierResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Master Data';
 
-    protected static ?string $navigationLabel = 'Supplier';
+    protected static ?string $navigationLabel = 'Suppliers';
 
     protected static ?int $navigationSort = 3;
 
