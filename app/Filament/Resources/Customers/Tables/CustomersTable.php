@@ -55,8 +55,8 @@ class CustomersTable
                     ]),
             ])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->color('info')->button(),
+                DeleteAction::make()->color('danger')->button(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

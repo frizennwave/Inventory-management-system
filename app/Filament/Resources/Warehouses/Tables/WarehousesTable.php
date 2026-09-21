@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Suppliers\Tables;
+namespace App\Filament\Resources\Warehouses\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -11,31 +11,35 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class SuppliersTable
+class WarehousesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Supplier Name')
+                    ->label('Warehouse Name')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('email')
-                    ->label('Email')
+                TextColumn::make('location')
+                    ->label('Location')
                     ->searchable()
-                    ->default('-')
-                    ->icon('heroicon-o-envelope'),
-                TextColumn::make('phone')
-                    ->label('Phone')
-                    ->searchable()
-                    ->default('-')
-                    ->icon('heroicon-o-phone'),
+                    ->default('-'),
+                TextColumn::make('stocks_count')
+                    ->label('Stock Entries')
+                    ->counts('stocks')
+                    ->badge()
+                    ->color('info'),
                 TextColumn::make('purchases_count')
                     ->label('Purchases')
                     ->counts('purchases')
                     ->badge()
-                    ->color('info'),
+                    ->color('warning'),
+                TextColumn::make('sales_count')
+                    ->label('Sales')
+                    ->counts('sales')
+                    ->badge()
+                    ->color('success'),
                 ToggleColumn::make('status')
                     ->label('Status')
                     ->onColor('success')
@@ -48,7 +52,7 @@ class SuppliersTable
             ])
             ->filters([
                 SelectFilter::make('status')
-                    ->label('Status')
+                    ->label('Satatus')
                     ->options([
                         '1' => 'Active',
                         '0' => 'Inactive',
