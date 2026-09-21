@@ -54,6 +54,7 @@ class PurchasesTable
                     ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
                         'completed' => 'success',
+                        default => 'gray',
                     })
                     ->searchable(),
                 TextColumn::make('created_at')
